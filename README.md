@@ -4,19 +4,17 @@ This addon extends [ember-leaflet](http://www.ember-leaflet.com/) 2.0. It extend
 It uses [this leaflet extension](https://github.com/MazeMap/Leaflet.TileLayer.PouchDBCached) to accomplish that.
 
 ## Usage
-```javascript
-tileOptions: {
-  type: 'map',
-  subdomains: '1234',
-  ext: 'png',
-  attribution: 'Map data © <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors',
-  useCache: true // this enables tiles caching
-}
-````
+
+Your `{{tile-layer}}`s now have new options and events regarding caching. Consult [Leaflet.TileLayer.PouchDBCached's usage section](https://github.com/MazeMap/Leaflet.TileLayer.PouchDBCached#usage) for more info. In general, you will want to set `useCache` to `true` to quickly enable tile caching.
 
 ```hbs
 {{#leaflet-map lat=51.512983 lng=-0.138289 zoom=12}}
-  {{tile-layer url=tileUrl options=tileOptions}}
+  {{!-- `useCache=true` enables tiles caching --}}
+  {{tile-layer
+    url=tileUrl
+    subdomains="1234"
+    attribution="Map data © <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors"
+    useCache=true}}
 {{/leaflet-map}}
 ```
 
